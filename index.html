@@ -5,14 +5,18 @@
     <title></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="stylesheet" href="resources/bootstrap-4.5.0-dist/css/bootstrap.css">
+    <script src="resources/jquery/jquery-3.5.1.js"></script>
+    <script src="resources/bootstrap-4.5.0-dist/js/bootstrap.bundle.js"></script>
+    <script src="resources/bootstrap-4.5.0-dist/js/bootstrap.js"></script>
 </head>
 
 <body>
     <header class="header-nav">
         <nav>
             <div class="nav-top">
-                <div class="logo-img"><a href="index.html"><img src="images/logo.svg" alt="로고이미지"></a></div>
+                <div class="logo-img"><a href="index.html"><img src="resources/images/logo.svg" alt="로고이미지"></a></div>
                 <div class="utility-menu">
                     <a href="#">
                         <p>회원가입</p>
@@ -224,12 +228,38 @@
             </div>
         </nav>
     </header>
-    <div class="slide-img">
-        <img src="images/slide_img.jpg">
-        <div class="slide-text">
-            <h2>무형유산 디지털 체험관 개관 </h2>
-            <p>놀이한마당(AI,VR 체험), 아름다운 향연(포토존), 함께하는 장인 정신(꾸미기), 다면 영상관(3차원 입체영상)</p>
+    <div id="carouselExampleControls" class="carousel slide slide-img" data-ride="carousel">
+        <div class="carousel-inner slide-image">
+            <div class="carousel-item active slide-item" data-interval="2200">
+                <img src="resources/images/slide/02.01.무형유산 디지털 체험관.jpg" class="d-block w-100 h-100" alt="무형유산 디지털 체험관">
+                <div class="slide-caption d-block">
+                    <h2>무형유산 디지털 체험관 개관 </h2>
+                    <p>놀이한마당(AI,VR 체험), 아름다운 향연(포토존), 함께하는 장인 정신(꾸미기), 다면 영상관(3차원 입체영상)</p>
+                </div>
+            </div>
+            <div class="carousel-item slide-item" data-interval="2200">
+                <img src="resources/images/slide/02.02.씨름.jpg" class="d-block w-100 h-100" alt="씨름">
+                <div class="slide-caption d-block">
+                    <h2>씨름, 분단을 넘어 세계를 잇다! </h2>
+                    <p>유네스코 인류무형유산 등재 기념 특별전</p>
+                </div>
+            </div>
+            <div class="carousel-item slide-item" data-interval="2200">
+                <img src="resources/images/slide/1 (14).jpg" class="d-block w-100 h-100" alt="무형유산 유튜브 영상 공모전">
+                <div class="slide-caption d-block">
+                    <h2>무형유산 유튜브 영상 공모전 </h2>
+                    <p>본선 진출작 발표본선<br>작품 상영 및 시상식 : 4월 30일(일) 무형문화재관리원</p>
+                </div>
+            </div>
         </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
     <div class="content">
         <div class="tabs">
