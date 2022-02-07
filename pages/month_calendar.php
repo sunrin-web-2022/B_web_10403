@@ -1,7 +1,8 @@
 <div class="border-bottom p-4">
-    <h3 class="float-left">월간 공연 일정</h3>
-    <p class="float-right">홈 &gt; 행사 안내 &gt; 공연 &gt; 월간 공연 일정</p>
-    <div class="clearfix"></div>
+    <div class="container d-flex justify-content-between">
+        <h3>월간 공연 일정</h3>
+        <p>홈 &gt; 행사 안내 &gt; 공연 &gt; 월간 공연 일정</p>
+    </div>
 </div>
 <div class="container">
     <div class="d-flex justify-content-center m-4 c-text">

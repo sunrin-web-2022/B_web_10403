@@ -1,7 +1,9 @@
 <div class="border-bottom p-4">
-    <h3 class="float-left">무형문화재 현황</h3>
-    <p class="float-right">홈 &gt; 무형문화재 현황</p>
-    <div class="clearfix"></div>
+    <div class="container d-flex justify-content-between">
+        <h3>무형문화재 현황</h3>
+        <p>홈 &gt; 무형문화재 현황</p>
+        <div class="clearfix"></div>
+    </div>
 </div>
 <div class="">
     <ul class="nav nav-pills m-3 justify-content-end" id="pills-tab" role="tablist">
