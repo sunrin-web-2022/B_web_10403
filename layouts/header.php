@@ -58,7 +58,7 @@
                                             <a href="#" class="nav-link">설립목적</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link">연혁</a>
+                                            <a href="history" class="nav-link">연혁</a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="#" class="nav-link">역할</a>
