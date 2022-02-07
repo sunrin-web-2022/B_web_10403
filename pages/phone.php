@@ -57,7 +57,6 @@
                 }
 
                 response.items.forEach(e => {
-                    //데이터를 기반으로 레이아웃 업데이트
                     let parent;
 
                     $.each($(".phone-pane h4"), function(i, v) {
