@@ -72,7 +72,7 @@
                                     <a href="#" class="nav-link">조직 및 구성</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">전화번호</a>
+                                    <a href="phone" class="nav-link">전화번호</a>
                                 </li>
                             </ul>
                         </div>

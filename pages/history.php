@@ -3,8 +3,8 @@
         <h3>연혁</h3>
         <p>홈 &gt; 일반현황 &gt; 연혁</p>
     </div>
-
 </div>
+
 <div class="container">
     <button class="btn btn-primary float-right m-3" type="button" onclick="historyInsertModal()">연혁 추가</button>
     <div class="container mb-3">
