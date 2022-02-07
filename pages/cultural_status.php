@@ -2,22 +2,23 @@
     <div class="container d-flex justify-content-between">
         <h3>무형문화재 현황</h3>
         <p>홈 &gt; 무형문화재 현황</p>
-        <div class="clearfix"></div>
     </div>
 </div>
-<div class="">
+<div class="container">
     <ul class="nav nav-pills m-3 justify-content-end" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
-            <a class="nav-link active" id="pills-album-tab" data-toggle="pill" href="#pills-album" role="tab" aria-controls="pills-album" aria-selected="true">앨범형</a>
+            <a class="nav-link active" id="album-tab" data-toggle="pill" href="#album" role="tab">앨범형</a>
         </li>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" id="pills-list-tab" data-toggle="pill" href="#pills-list" role="tab" aria-controls="pills-list" aria-selected="false">목록형</a>
+            <a class="nav-link" id="list-tab" data-toggle="pill" href="#list" role="tab">목록형</a>
         </li>
     </ul>
     <div class="tab-content container" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-album" role="tabpanel" aria-labelledby="pills-album-tab">
-            ...</div>
-        <div class="tab-pane fade container" id="pills-list" role="tabpanel" aria-labelledby="pills-list-tab">
+        <div class="tab-pane fade show active" id="album" role="tabpanel">
+            <div class="row w-100">
+            </div>
+        </div>
+        <div class="tab-pane fade" id="list" role="tabpanel">
             <table class="table table-hover mt-3">
                 <thead class="thead-light">
                     <tr>
@@ -101,40 +102,181 @@
                     </tr>
                 </tbody>
             </table>
-            <nav aria-label="Page navigation">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&lt;</span>
-                        </a>
-                    </li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                    <li class="page-item"><a class="page-link" href="#">6</a></li>
-                    <li class="page-item"><a class="page-link" href="#">7</a></li>
-                    <li class="page-item"><a class="page-link" href="#">8</a></li>
-                    <li class="page-item"><a class="page-link" href="#">9</a></li>
-                    <li class="page-item"><a class="page-link" href="#">10</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&gt;</span>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
         </div>
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center" id="cultural-pagination">
+            </ul>
+        </nav>
     </div>
 </div>
+<script>
+    let totalCnt = -1;
+    let currentPageIndex = 1;
+    let finalPageIndex = -1;
+
+    $("html").ready(function() {
+        selectIndex(1);
+    });
+
+    function selectIndex(obj) {
+        let str = "";
+        let index = -1;
+
+        if (typeof obj == "object") {
+            str = $(obj).text();
+        } else {
+            str = obj;
+        }
+
+        if (parseInt(str)) {
+            index = parseInt(str);
+        }
+
+        switch (str) {
+            case "<<":
+                currentPageIndex = 1;
+                break;
+            case "<":
+                if (currentPageIndex - 1 >= 1) {
+                    currentPageIndex--;
+                }
+                break;
+            case ">":
+                if (currentPageIndex + 1 <= finalPageIndex) {
+                    currentPageIndex++;
+                }
+                break;
+            case ">>":
+                currentPageIndex = finalPageIndex;
+                break;
+            default:
+                currentPageIndex = index;
+                break;
+        }
+
+        let tmp_i = 0;
+
+        if (currentPageIndex - 5 < 0) {
+            tmp_i = 1;
+        } else if (currentPageIndex - 5 >= 0 && currentPageIndex + 5 <= finalPageIndex) {
+            tmp_i = currentPageIndex - 4;
+        } else if (currentPageIndex + 5 > finalPageIndex) {
+            tmp_i = finalPageIndex - 8;
+        }
+
+        $("#cultural-pagination li").remove();
+
+        let parent = $("#cultural-pagination");
+
+        obj = $(`
+        <li class="page-item">
+            <a class="page-link" onclick="selectIndex(this)">&lt;&lt;</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" onclick="selectIndex(this)">&lt;</a>
+        </li>
+        `);
+
+        parent.append(obj);
+
+        for (let i = tmp_i; i < tmp_i + 9; i++) {
+            obj = $(`
+            <li class="page-item">
+            <a class="page-link" onclick="selectIndex(this)">${ i }</a>
+            </li>
+            `);
+
+            if (i == currentPageIndex) {
+                obj.addClass("active");
+            }
+
+            parent.append(obj);
+
+        }
+
+        obj = $(`
+        <li class="page-item">
+            <a class="page-link" onclick="selectIndex(this)">&gt;</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" onclick="selectIndex(this)">&gt;&gt;</a>
+        </li>
+        `);
+
+        parent.append(obj);
+        updateLayout();
+    }
+
+    function updateLayout() {
+        $.ajax({
+            type: "POST",
+            url: "xml/nihList.xml",
+            dataType: "xml",
+            cache: false,
+            async: false,
+            success: function(response) {
+                response = $(response);
+
+                totalCnt = parseInt(response.find("totalCnt").text());
+                finalPageIndex = parseInt(totalCnt / 8) + 1;
+
+                let items = response.find("item");
+
+                $("#album .row .col-3").remove();
+                let parent = $("#album .row");
+                for (let i = (currentPageIndex - 1) * 8; i < currentPageIndex * 8; i++) {
+                    if (i > totalCnt - 1) {
+                        break;
+                    }
+                    let item = $(items[i]);
+                    let ccbaMnm1 = item.find("ccbaMnm1").text();
+                    let ccbaKdcd = item.find("ccbaKdcd").text();
+                    let ccbaCtcd = item.find("ccbaCtcd").text();
+                    let ccbaAsno = item.find("ccbaAsno").text();
+                    let imgUrl = "";
+
+                    $.ajax({
+                        type: "POST",
+                        url: `xml/detail/${ccbaKdcd}_${ccbaCtcd}_${ccbaAsno}.xml`,
+                        dataType: "xml",
+                        cache: false,
+                        async: false,
+                        success: function(response) {
+                            imgUrl = $(response).find("imageUrl").text();
+                        }
+                    });
+
+                    let obj = "";
+                    if (!imgUrl) {
+                        obj = $(`
+                    <div class="col-3 my-3">
+                        <div class="card text-center bg-transparent">
+                            <div class="w-100 border-bottom card-custom-img position-relative" style="height: 180px;><p class="h-100 m-auto">no image</p></div>
+                            <div class="card-body">
+                                <h5 class="card-title pb-1 m-0">${ ccbaMnm1 }</h5>
+                            </div>
+                        </div>
+                    </div>
+                    `);
+                    } else {
+                        obj = $(`
+                    <div class="col-3 my-3">
+                        <div class="card text-center bg-transparent">
+                            <div class="w-100 border-bottom card-custom-img position-relative" style="height: 180px; background: url(xml/nihcImage/${ imgUrl }); background-size: cover; background-position: center center;"></div>
+                            <div class="card-body">
+                                <h5 class="card-title pb-1 m-0">${ ccbaMnm1 }</h5>
+                            </div>
+                        </div>
+                    </div>
+                    `);
+                    }
+
+                    parent.append(obj);
+
+
+
+                }
+            }
+        });
+    }
+</script>

@@ -43,7 +43,6 @@
     }
 
     function updateLayout() {
-        //api /restApi/phone.php에서 json 가져오고, 레이아웃 업데이트
         $.ajax({
             type: "POST",
             url: "restAPI/phone.php",
