@@ -109,7 +109,8 @@
 .time-card {
    box-shadow: 0 4px 10px -4px black;
    border-radius: 10px;
-   width: 20vw;
+   width: 35vw;
+   max-width: 300px;
 }
 
 .time-box{
