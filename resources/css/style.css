@@ -159,3 +159,23 @@ footer a{
 footer a:hover{
    text-decoration: none;
 }
+
+.c-text a:hover{
+    text-decoration: none;
+}
+.c-text a h5, .c-text h4{
+    margin: 0;
+}
+.ago{
+    color: gainsboro;
+}
+
+.calender td:nth-child(1):not(.ago){
+    color: red;
+}
+.calender td:nth-child(7):not(.ago){
+    color: blue;
+}
+.calender tr:not(.table-primary){
+    height: 80px;
+}
